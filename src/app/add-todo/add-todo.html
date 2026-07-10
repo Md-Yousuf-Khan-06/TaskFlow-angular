@@ -1,0 +1,22 @@
+<div class="addtodo-container">
+    
+    <input [(ngModel)]= 'task' placeholder="Enter a new task">
+    <button (click)="addTask()" class="addbutton"> Add task</button>
+</div> 
+
+<div class="task-container">
+    @for(taskitem of tasks; track $index){
+    <div class="task-card"
+    [class.completed-card]="taskitem.completed">
+        {{taskitem.name}}
+    @if(!taskitem.completed){
+        <button (click)="completeTask($index)">Complete</button>
+        }
+    <button (click)="deleteTask($index)" class="deletebutton"> Delete </button>
+</div> 
+}
+
+</div>
+
+    
+
