@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class Header {
 
-  title :number | string = "MyToDo" 
-  subtitle:string= "Stay Organized"
+  title :number | string = "TaskFlow" 
+  subtitle:string= "Organize Smarter. Achieve More."
 
 }

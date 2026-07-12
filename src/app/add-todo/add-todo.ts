@@ -32,4 +32,19 @@ deleteTask(index: number){
 completeTask (index: number){
   this.tasks[index].completed=true
 }
+getTotalTasks() {
+  return this.tasks.length
 }
+getCompletedTasks(){
+  let completed_count: number = 0;
+  for (let task of this.tasks){
+    if (task.completed)
+      completed_count++
+  }
+  return completed_count
+}
+getPendingTasks(){
+  return this.getTotalTasks()-this.getCompletedTasks()
+}
+}
+
