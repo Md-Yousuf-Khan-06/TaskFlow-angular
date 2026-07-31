@@ -23,11 +23,27 @@
     @for(taskitem of tasks; track $index){
     <div class="task-card"
     [class.completed-card]="taskitem.completed">
+    
+    @if (taskitem.edit){
+        <input [(ngModel)]="taskitem.name" class="editinput">
+        
+    }
+    @else{
         {{taskitem.name}}
-    @if(!taskitem.completed){
-        <button (click)="completeTask($index)">Complete</button>
+    }
+    @if(taskitem.edit){
+        <button (click)="saveTask($index)" class="savebutton">Save</button>
+        <button (click)="deleteTask($index)" class="deletebutton"> Delete </button>
+    }
+    @else{
+        <div class="task-actions"></div>
+        @if(!taskitem.completed){
+            <button (click)="completeTask($index)" class="completebutton">Complete</button>
         }
-    <button (click)="deleteTask($index)" class="deletebutton"> Delete </button>
+        <button (click)="editTask($index)" class="editbutton"> Edit </button>
+        <button (click)="deleteTask($index)" class="deletebutton"> Delete </button>
+    }
+
 </div> 
 }
 

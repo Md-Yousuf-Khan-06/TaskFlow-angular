@@ -11,7 +11,8 @@ export class AddTodo {
   task:string= ''
   tasks:{
     name: string,
-    completed: boolean
+    completed: boolean,
+    edit: boolean
   }[]=[]
 
 addTask(){
@@ -20,7 +21,8 @@ addTask(){
   if (this.task!=''){
     this.tasks.push({
       name:this.task,
-      completed:false
+      completed:false,
+      edit: false
     })
     console.log(this.tasks)
     this.task=''
@@ -45,6 +47,12 @@ getCompletedTasks(){
 }
 getPendingTasks(){
   return this.getTotalTasks()-this.getCompletedTasks()
+}
+editTask(index:number){
+  this.tasks[index].edit=true;
+}
+saveTask(index:number){
+  this.tasks[index].edit=false;
 }
 }
 

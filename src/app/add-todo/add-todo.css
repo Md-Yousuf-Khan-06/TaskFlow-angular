@@ -104,3 +104,50 @@ input:focus{
 .stat-card-pending p{
     color:#F59E0B;
 }
+.savebutton{
+    background-color: #2563EB;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.savebutton:hover{
+    background-color: #1D4ED8;
+}
+.completebutton{
+    background-color: #22C55E;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.completebutton:hover{
+    background-color: #16A34A;
+}
+.editinput{
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #2563EB;
+    border-radius: 10px;
+    outline: none;
+}
+.editbutton{
+    background-color: #F59E0B;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.editbutton:hover{
+    background-color: #D97706;
+}
+.edit-actions{
+    display:flex;
+    gap:10px;
+}
