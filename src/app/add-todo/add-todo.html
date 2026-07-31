@@ -18,9 +18,10 @@
     <input [(ngModel)]= 'task' placeholder="Enter a new task">
     <button (click)="addTask()" class="addbutton"> Add task</button>
 </div> 
+<div class="search-container"><input [(ngModel)]="searchTask" class="search-input" placeholder="🔍 Search tasks..."></div>
 
 <div class="task-container">
-    @for(taskitem of tasks; track $index){
+    @for(taskitem of getFilteredTasks(); track $index){
     <div class="task-card"
     [class.completed-card]="taskitem.completed">
     
@@ -36,13 +37,14 @@
         <button (click)="deleteTask($index)" class="deletebutton"> Delete </button>
     }
     @else{
-        <div class="task-actions"></div>
+        <div class="task-actions">
         @if(!taskitem.completed){
             <button (click)="completeTask($index)" class="completebutton">Complete</button>
         }
         <button (click)="editTask($index)" class="editbutton"> Edit </button>
         <button (click)="deleteTask($index)" class="deletebutton"> Delete </button>
-    }
+        </div>
+    }   
 
 </div> 
 }

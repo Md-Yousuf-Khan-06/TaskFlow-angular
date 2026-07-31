@@ -115,6 +115,7 @@ input:focus{
 
 .savebutton:hover{
     background-color: #1D4ED8;
+    transition:.3s;
 }
 .completebutton{
     background-color: #22C55E;
@@ -127,6 +128,7 @@ input:focus{
 
 .completebutton:hover{
     background-color: #16A34A;
+    transition:.3s;
 }
 .editinput{
     flex: 1;
@@ -150,4 +152,22 @@ input:focus{
 .edit-actions{
     display:flex;
     gap:10px;
+    align-items: center;
+}
+.task-actions{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+.search-container{
+    margin: 0 40px 30px;
+}
+.search-container{
+    display: flex;
+    justify-content: center;
+    margin: 20px 40px;
+}
+
+.search-input{
+    width: 75%;
 }

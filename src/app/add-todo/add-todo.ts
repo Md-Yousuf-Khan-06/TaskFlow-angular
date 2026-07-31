@@ -54,5 +54,17 @@ editTask(index:number){
 saveTask(index:number){
   this.tasks[index].edit=false;
 }
+searchTask:string='';
+getFilteredTasks(){
+  if (this.searchTask.trim() == "") {
+    return this.tasks;
+  } 
+  return this.tasks.filter(task => {
+    return task.name
+    .toLowerCase()
+    .includes(this.searchTask.trim().toLowerCase())
+  });
+}
+
 }
 
