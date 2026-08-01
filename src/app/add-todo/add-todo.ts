@@ -9,7 +9,9 @@ import { FormsModule } from '@angular/forms';
 export class AddTodo {
 
   task:string= ''
+  nextId: number = 1;
   tasks:{
+    id: number;
     name: string,
     completed: boolean,
     edit: boolean
@@ -20,19 +22,30 @@ addTask(){
   // console.log("button clicked")
   if (this.task!=''){
     this.tasks.push({
+      id: this.nextId,
       name:this.task,
       completed:false,
       edit: false
     })
     console.log(this.tasks)
-    this.task=''
+    this.nextId++;
+    this.task = '';
+
   }
 }
-deleteTask(index: number){
-  this.tasks.splice(index, 1)
+deleteTask(id: number) {
+  const index = this.tasks.findIndex(task => task.id === id);
+
+  if (index !== -1) {
+    this.tasks.splice(index, 1);
+  }
 }
-completeTask (index: number){
-  this.tasks[index].completed=true
+completeTask(id: number) {
+  const task = this.tasks.find(task => task.id === id);
+
+  if (task) {
+    task.completed = true;
+  }
 }
 getTotalTasks() {
   return this.tasks.length
@@ -48,23 +61,33 @@ getCompletedTasks(){
 getPendingTasks(){
   return this.getTotalTasks()-this.getCompletedTasks()
 }
-editTask(index:number){
-  this.tasks[index].edit=true;
+editTask(id: number) {
+  const task = this.tasks.find(task => task.id === id);
+
+  if (task) {
+    task.edit = true;
+  }
 }
-saveTask(index:number){
-  this.tasks[index].edit=false;
+saveTask(id: number) {
+  const task = this.tasks.find(task => task.id === id);
+
+  if (task) {
+    task.edit = false;
+  }
 }
 searchTask:string='';
 getFilteredTasks(){
-  if (this.searchTask.trim() == "") {
-    return this.tasks;
-  } 
   return this.tasks.filter(task => {
-    return task.name
+    const matchesSearch = task.name
     .toLowerCase()
     .includes(this.searchTask.trim().toLowerCase())
+    const matchesFilter =
+    this.selectedFilter === "All" ||
+    this.selectedFilter === "Completed" && task.completed ||
+    this.selectedFilter === "Pending" && !task.completed
+    return matchesSearch && matchesFilter;
   });
 }
-
+selectedFilter: string = "All";
 }
 
