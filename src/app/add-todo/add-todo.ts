@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-add-todo',
   imports: [FormsModule],
   templateUrl: './add-todo.html',
   styleUrl: './add-todo.css',
 })
-export class AddTodo {
+export class AddTodo implements OnInit {
 
   task:string= ''
   nextId: number = 1;
@@ -16,7 +17,9 @@ export class AddTodo {
     completed: boolean,
     edit: boolean
   }[]=[]
-
+ngOnInit() {
+  this.loadFromLocalStorage();
+}
 addTask(){
   // console.log(this.task)
   // console.log("button clicked")
@@ -30,7 +33,21 @@ addTask(){
     console.log(this.tasks)
     this.nextId++;
     this.task = '';
+    this.saveToLocalStorage();
 
+  }
+  }
+saveToLocalStorage(){
+  localStorage.setItem("tasks", JSON.stringify(this.tasks));
+}
+loadFromLocalStorage() {
+  const data=localStorage.getItem("tasks")
+    if (data) {
+      this.tasks=JSON.parse(data)
+      if (this.tasks.length > 0) {
+        const lastId = this.tasks[this.tasks.length - 1].id;
+        this.nextId = lastId + 1;
+    }
   }
 }
 deleteTask(id: number) {
@@ -38,6 +55,7 @@ deleteTask(id: number) {
 
   if (index !== -1) {
     this.tasks.splice(index, 1);
+    this.saveToLocalStorage();
   }
 }
 completeTask(id: number) {
@@ -45,6 +63,7 @@ completeTask(id: number) {
 
   if (task) {
     task.completed = true;
+    this.saveToLocalStorage();
   }
 }
 getTotalTasks() {
@@ -73,6 +92,7 @@ saveTask(id: number) {
 
   if (task) {
     task.edit = false;
+    this.saveToLocalStorage();
   }
 }
 searchTask:string='';
