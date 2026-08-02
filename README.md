@@ -1,59 +1,128 @@
-# MyToDo
+# 📝 TaskFlow – Angular Todo Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.0.
+TaskFlow is a modern responsive Todo application built with Angular 22 that helps users organize daily tasks with a clean UI, Local Storage persistence, and real-time task management.. The application provides a clean and intuitive user interface while demonstrating Angular fundamentals such as component-based architecture, data binding, event handling, state management, and local storage integration.
 
-## Development server
+---
 
-To start a local development server, run:
+# ✨ Features
+
+* ➕ Add new tasks
+* ✏️ Edit existing tasks
+* 🗑️ Delete tasks
+* ✅ Mark tasks as completed
+* 🔍 Search tasks instantly
+* 📂 Filter tasks by:
+
+  * All
+  * Completed
+  * Pending
+* 📊 Real-time task statistics
+* 💾 Persistent data using Local Storage
+* ⌨️ Add tasks using the Enter key
+* 🚫 Prevent duplicate tasks
+* 🚫 Disable adding empty tasks
+* 📱 Fully responsive design for Desktop, Tablet, and Mobile
+* 🎨 Modern and clean user interface
+
+---
+
+# 🛠️ Tech Stack
+
+* Angular 22
+* TypeScript
+* HTML5
+* CSS3
+* Local Storage API
+
+---
+
+# 📂 Project Structure
+
+```
+src/
+│
+├── app/
+│   ├── header/
+│   ├── add-todo/
+│   ├── footer/
+│   ├── app.html
+│   └── app.ts
+│
+├── styles.css
+```
+
+---
+
+# ⚙️ Installation
+
+### Clone the repository
+
+```bash
+git clone https://github.com/Md-Yousuf-Khan-06/TaskFlow-angular.git
+```
+
+### Navigate to the project
+
+```bash
+cd TaskFlow-angular
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run the development server
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open your browser and navigate to:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+# 🎯 Key Angular Concepts Demonstrated
 
-## Building
+* Standalone Components
+* Component-Based Architecture
+* Two-Way Data Binding (`ngModel`)
+* Event Binding
+* Property Binding
+* Angular Control Flow (`@if`, `@for`)
+* CRUD Operations
+* Local Storage Integration
+* Responsive UI Design
+* Component Styling & UI Organization
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+# 🚀 Future Enhancements
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Potential improvements that can be added in future versions:
 
-## Running unit tests
+* User Authentication
+* Backend Database Integration
+* Drag & Drop Task Sorting
+* Task Categories
+* Due Dates
+* Priority Levels
+* Notifications & Reminders
+* Dark Mode
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+# 👨‍💻 Author
 
-## Running end-to-end tests
+**Mohammed Yousuf Khan**
 
-For end-to-end (e2e) testing, run:
+* LinkedIn: https://www.linkedin.com/in/mohammed-yousuf-khan-ai
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## ⭐ If you found this project helpful, consider giving it a star.
