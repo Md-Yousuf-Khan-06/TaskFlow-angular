@@ -20,23 +20,32 @@ export class AddTodo implements OnInit {
 ngOnInit() {
   this.loadFromLocalStorage();
 }
-addTask(){
-  // console.log(this.task)
-  // console.log("button clicked")
-  if (this.task!=''){
+addTask() {
+  const newTask = this.task.trim();
+
+  if (newTask !== "") {
+
+    const existingTask = this.tasks.find(
+      task => task.name === newTask
+    );
+
+    if (existingTask) {
+      alert("Task already exists!");
+      return;
+    }
+
     this.tasks.push({
       id: this.nextId,
-      name:this.task,
-      completed:false,
+      name: newTask,
+      completed: false,
       edit: false
-    })
-    console.log(this.tasks)
-    this.nextId++;
-    this.task = '';
-    this.saveToLocalStorage();
+    });
 
+    this.nextId++;
+    this.task = "";
+    this.saveToLocalStorage();
   }
-  }
+}
 saveToLocalStorage(){
   localStorage.setItem("tasks", JSON.stringify(this.tasks));
 }
@@ -108,6 +117,28 @@ getFilteredTasks(){
     return matchesSearch && matchesFilter;
   });
 }
+
 selectedFilter: string = "All";
+getEmptyMessage() {
+
+  if (this.tasks.length === 0) {
+    return "📝 No tasks yet. Add your first task!";
+  }
+
+  if (this.searchTask.trim() !== "") {
+    return "🔍 No matching tasks found.";
+  }
+
+  if (this.selectedFilter === "Completed") {
+    return "✅ No completed tasks.";
+  }
+
+  if (this.selectedFilter === "Pending") {
+    return "⏳ No pending tasks.";
+  }
+
+  return "📝 No tasks found.";
+}
+
 }
 

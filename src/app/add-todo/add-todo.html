@@ -1,54 +1,59 @@
     <div class="statistics-container">
         <div class=" stat-card stat-card-total" (click)="selectedFilter = 'All'"  [class.active-filter]="selectedFilter === 'All'">
-            <h3> Total Tasks  </h3>
+            <h3>📋 Total Tasks</h3>
             <p> {{getTotalTasks()}} </p>
         </div>   
         <div class=" stat-card stat-card-completed" (click)="selectedFilter = 'Completed'"  [class.active-filter]="selectedFilter === 'Completed'">
-            <h3> Completed Tasks  </h3>
+            <h3>✅ Completed</h3>
             <p> {{getCompletedTasks()}} </p>
         </div>
         <div class=" stat-card stat-card-pending" (click)="selectedFilter = 'Pending'"[class.active-filter]="selectedFilter === 'Pending'">
-            <h3> Pending Tasks  </h3>
+            <h3>⏳ Pending</h3>
             <p> {{getPendingTasks()}} </p>
         </div>
 
     </div>
 
     <div class="addtodo-container">
-        <input [(ngModel)]= 'task' placeholder="Enter a new task">
-        <button (click)="addTask()" class="addbutton"> Add task</button>
+        <input [(ngModel)]= 'task' (keyup.enter)="addTask()" placeholder="📝 Enter a new task" >
+        <button (click)="addTask()" class="addbutton" [disabled]="task.trim() === ''"> Add task</button>
     </div> 
     <div class="search-container"><input [(ngModel)]="searchTask" class="search-input" placeholder="🔍 Search tasks..."></div>
 
     <div class="task-container">
-        @for(taskitem of getFilteredTasks(); track taskitem.id){
-        <div class="task-card"
-        [class.completed-card]="taskitem.completed">
-        
-        @if (taskitem.edit){
-            <input [(ngModel)]="taskitem.name" class="editinput">
+    @if(getFilteredTasks().length === 0){
+        <div class="empty-state">{{ getEmptyMessage() }}</div>
         }
         @else{
-            {{taskitem.name}}
-        }
-        @if(taskitem.edit){
-            <button (click)="saveTask(taskitem.id)" class="savebutton">Save</button>
-            <button (click)="deleteTask(taskitem.id)" class="deletebutton">Delete</button>
-        }
-        @else{
-            <div class="task-actions">
-            @if(!taskitem.completed){
-                <button (click)="completeTask(taskitem.id)" class="completebutton">Complete</button>
+
+            @for(taskitem of getFilteredTasks(); track taskitem.id){
+                <div class="task-card"
+                [class.completed-card]="taskitem.completed">
+                    @if(taskitem.edit){
+                        <input [(ngModel)]="taskitem.name" class="editinput">
+                    }
+                    @else{
+                        <div class="task-name"> {{taskitem.name}}</div>
+                    }
+                    @if(taskitem.edit){
+                        <button (click)="saveTask(taskitem.id)" class="savebutton">💾 Save</button>
+                        <button (click)="deleteTask(taskitem.id)" class="deletebutton">🗑 Delete</button>
+                    }
+                    @else{
+                        <div class="task-actions">
+                            @if(!taskitem.completed){
+                                <button (click)="completeTask(taskitem.id)"class="completebutton">✔ Complete</button>
+                            }
+                    <button (click)="editTask(taskitem.id)"class="editbutton">✏ Edit</button>
+                    <button (click)="deleteTask(taskitem.id)" class="deletebutton">🗑 Delete</button>
+                    </div>
+                }</div>
             }
-            <button (click)="editTask(taskitem.id)" class="editbutton">Edit</button>
-            <button (click)="deleteTask(taskitem.id)" class="deletebutton">Delete</button>
-            </div>
-        }   
+            
+        }
 
-    </div> 
-    }
-
-    </div>
+  
 
         
 
+        

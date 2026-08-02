@@ -1,0 +1,73 @@
+.addbutton{
+    width:150px;
+    padding:18px;
+    border:none;
+    border-radius:12px;
+    background:#2563EB;
+    color:white;
+    cursor:pointer;
+    transition:.25s ease;
+}
+
+.addbutton:hover{
+    background:#1D4ED8;
+    transform:translateY(-2px);
+}
+
+.addbutton:disabled{
+    background:#94A3B8;
+    cursor:not-allowed;
+    opacity:.7;
+}
+
+.savebutton,
+.completebutton,
+.editbutton,
+.deletebutton{
+    padding:10px 18px;
+    border:none;
+    border-radius:12px;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+    transition:.25s ease;
+}
+
+.savebutton{
+    background:#2563EB;
+    transition:.25s ease;
+}
+
+.savebutton:hover{
+    background:#1D4ED8;
+    transform:translateY(-2px);
+}
+
+.completebutton{
+    background:#22C55E;
+}
+
+.completebutton:hover{
+    background:#16A34A;
+    transition:.25s ease;
+}
+
+.editbutton{
+    background:#F59E0B;
+    transition:.25s ease;
+}
+
+.editbutton:hover{
+    background:#D97706;
+    transform:translateY(-2px);
+}
+
+.deletebutton{
+    background:#EF4444;
+    transition:.25s ease;
+}
+
+.deletebutton:hover{
+    background:#DC2626;
+    transform:translateY(-2px);
+}
